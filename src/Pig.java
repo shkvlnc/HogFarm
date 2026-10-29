@@ -30,6 +30,11 @@ public class Pig{
     }
 
     public void updateWeightKg(double newWeightKg){
+        if(newWeightKg <= 0){
+            throw new IllegalArgumentException(
+                    "Weight must be greater than zero"
+            );
+        }
         this.weightKg = newWeightKg;
     }
 

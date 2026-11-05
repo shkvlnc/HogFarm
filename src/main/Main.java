@@ -1,29 +1,32 @@
 package main;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
 
-        Pig pig = new Pig(1, "HF-001", 12.5);
+        ArrayList<Pig> pigs = new ArrayList<>();
 
-        System.out.println("ID: " + pig.getId());
-        System.out.println("TagNumber: " + pig.getId());
-        System.out.println("Weight: " + pig.getWeightKg());
-        System.out.println("Status: " + pig.getStatus());
+        Pig pig1 = new Pig(1, "HF-001", 12.5);
+        Pig pig2 = new Pig(2, "HF-002", 15.0);
+        Pig pig3 = new Pig(3, "HF-003", 13.7);
 
+        pigs.add(pig1);
+        pigs.add(pig2);
+        pigs.add(pig3);
 
-        try {
-            pig.updateWeight(-50.0);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Could not update weight.");
+        System.out.println("HOG FARM REGISTER");
+
+        for(Pig pig : pigs){
+            System.out.println(
+                    pig.getTagNumber()
+                    + " | "
+                    + pig.getWeightKg()
+                    + " | "
+                    + pig.getStatus()
+            );
         }
-//        pig.updateWeight(-25.5);
-//        pig.updateStatus(main.PigStatus.GROWER);
 
-        System.out.println("AFTER UPDATE");
-        System.out.println("-----------------");
-        System.out.println("ID: " + pig.getId());
-        System.out.println("TagNumber: " + pig.getId());
-        System.out.println("Weight: " + pig.getWeightKg());
-        System.out.println("Status: " + pig.getStatus());
+        System.out.println("Total pigs count: " + pigs.size());
     }
 }

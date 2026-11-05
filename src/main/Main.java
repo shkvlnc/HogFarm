@@ -4,29 +4,24 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        PigRegistry pigRegistry = new PigRegistry();
 
-        ArrayList<Pig> pigs = new ArrayList<>();
+        Pig pig1 = new Pig(1, "HF-001", 12.4);
+        Pig pig2 = new Pig(2, "HF-002", 13.1);
+        Pig pig3 = new Pig(3, "HF-003", 12.7);
 
-        Pig pig1 = new Pig(1, "HF-001", 12.5);
-        Pig pig2 = new Pig(2, "HF-002", 15.0);
-        Pig pig3 = new Pig(3, "HF-003", 13.7);
+        pigRegistry.registerPig(pig1);
+        pigRegistry.registerPig(pig2);
+        pigRegistry.registerPig(pig3);
 
-        pigs.add(pig1);
-        pigs.add(pig2);
-        pigs.add(pig3);
+        try{
+            Pig duplicatePig = new Pig(4, "HF-004", 20.0);
 
-        System.out.println("HOG FARM REGISTER");
-
-        for(Pig pig : pigs){
-            System.out.println(
-                    pig.getTagNumber()
-                    + " | "
-                    + pig.getWeightKg()
-                    + " | "
-                    + pig.getStatus()
-            );
+            pigRegistry.registerPig(duplicatePig);
+        }catch (IllegalArgumentException e){
+            System.out.println("Registration failed : " + e.getMessage());
         }
 
-        System.out.println("Total pigs count: " + pigs.size());
+        pigRegistry.listPigs();
     }
 }

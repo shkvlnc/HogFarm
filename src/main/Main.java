@@ -1,3 +1,5 @@
+package main;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -15,7 +17,7 @@ public class Main {
             System.out.println("Could not update weight.");
         }
 //        pig.updateWeight(-25.5);
-//        pig.updateStatus(PigStatus.GROWER);
+//        pig.updateStatus(main.PigStatus.GROWER);
 
         System.out.println("AFTER UPDATE");
         System.out.println("-----------------");

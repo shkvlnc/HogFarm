@@ -1,3 +1,5 @@
+package main;
+
 public class Pig {
     private final int id;
     private final String tagNumber;

@@ -4,26 +4,18 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        PigRegistry pigRegistry = new PigRegistry();
+        Pig pig = new Pig(1, "HF-001", 85.0);
 
-        Pig pig1 = new Pig(1, "HF-001", 12.4);
-        Pig pig2 = new Pig(2, "HF-002", 13.1);
-        Pig pig3 = new Pig(3, "HF-003", 12.7);
+        pig.updateStatus(PigStatus.SOLD);
 
-        pigRegistry.registerPig(pig1);
-        pigRegistry.registerPig(pig2);
-        pigRegistry.registerPig(pig3);
-
-        try{
-            Pig duplicatePig = new Pig(4, "HF-004", 20.0);
-
-            pigRegistry.registerPig(duplicatePig);
-        }catch (IllegalArgumentException e){
-            System.out.println("Registration failed : " + e.getMessage());
+        try {
+            pig.updateStatus(null);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid argument: " + e.getMessage());
+        } catch (IllegalStateException e) {
+            System.out.println("Invalid state: " + e.getMessage());
         }
 
-        pigRegistry.listPigs();
+        System.out.println("Final status: " + pig.getStatus());
     }
 }
-
-//test

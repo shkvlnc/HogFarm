@@ -1,9 +1,7 @@
 package main;
 
 public enum PigStatus {
-    PIGLET,
-    GROWER,
-    FINISHER,
+    ACTIVE,
     SOLD,
     DECEASED
 }

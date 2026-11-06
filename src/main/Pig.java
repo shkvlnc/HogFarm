@@ -42,7 +42,15 @@ public class Pig {
                     "Weight must be greater than 0"
             );
         }
+
+        if(this.status != PigStatus.ACTIVE){
+            throw new IllegalStateException(
+                    "Cannot update the weight of SOLD or DECEASED pig"
+            );
+        }
+
         this.weightKg = newWeightKg;
+
     }
 
     public void updateStatus (PigStatus newStatus) {
@@ -62,6 +70,11 @@ public class Pig {
     }
 
     public void updateStage (PigStage newStage){
+        if(this.status == PigStatus.SOLD || this.status == PigStatus.DECEASED){
+            throw new IllegalStateException(
+                    "Cannot change the stage of SOLD or DECEASED pigs"
+            );
+        }
         this.stage = newStage;
     }
 }
